@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spike Rao — Homepage</title>
 
-  <!-- 字体：古典衬线 + 现代无衬线 -->
+  <!-- Fonts: classical serif + modern sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     body{
       margin:0;
       color:var(--ink);
-      font-family:"Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(137,199,255,.22), transparent 60%),
         radial-gradient(1000px 600px at 10% 10%, rgba(125,247,212,.15), transparent 60%),
@@ -69,26 +69,26 @@
   </style>
 </head>
 <body>
-  <!-- 星空背景 -->
+  <!-- Starfield background -->
   <canvas id="bg" aria-hidden="true"></canvas>
 
   <div class="wrap">
     <header class="hero">
       <div class="portrait">
-        <!-- 换成你的照片文件名 -->
-        <img src="your-photo.jpg" alt="Spike Rao 的照片">
+        <!-- Replace with your photo file -->
+        <img src="your-photo.jpg" alt="Photo of Spike Rao">
       </div>
 
       <div class="title">
         <h1>Spike Rao</h1>
         <div class="subtitle">
-          工程 × 设计 · Circuits · Coding · Creative Tech
+          Electrical Engineering — Class of 2026 · Technology × Art × Design
         </div>
 
         <div class="actions">
-          <!-- 改成你的简历与邮箱&GitHub -->
-          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">下载简历</a>
-          <a class="btn" href="mailto:your_email@example.com">联系我</a>
+          <!-- Update with your real links -->
+          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn" href="mailto:your_email@example.com">Email me</a>
           <a class="btn" href="https://github.com/yourhandle" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -96,69 +96,77 @@
 
     <main>
       <section class="panel">
-        <h2>自述 · Autobiography</h2>
+        <h2>About</h2>
         <div class="ornament" aria-hidden="true"></div>
-        <p>我喜欢把精确的工程与富于叙事的设计揉在一起：一半是可靠的系统与算法，一半是引人共鸣的形式与体验。过去的项目横跨嵌入式控制、Web 可视化与创意编程；近期兴趣集中在把数理与可视表达用于启发与教育。</p>
-        <p>重视清晰表达与可访问性（accessibility），并持续把“可复用的文档与开源范式”放在创作核心，希望让更多人能复刻与改造作品。</p>
+        <p>I’m an Electrical Engineering student (Class of 2026) who loves blending technology, art, and design. I build interactive systems that balance precision and play—embedded control and reliability on one side; storytelling, visuals, and user experience on the other.</p>
+        <p>Recent work includes a <em>VR Space Station Museum</em>, a <em>bionic hand</em> prototype, a <em>face-muscle click interface</em>, and a set of <em>3D modeling</em> pieces. I care about clear documentation and accessibility so others can learn from and remix what I make.</p>
       </section>
 
       <section class="panel">
-        <h2>项目 · Projects</h2>
+        <h2>Selected Projects</h2>
         <div class="ornament" aria-hidden="true"></div>
 
         <div class="cards">
           <article class="card">
+            <a href="vr-museum.html">
+              <span class="badge">VR</span>
+              <h3>VR Space Station Museum</h3>
+              <p>Unity-built immersive tour with modular exhibits, spatial audio, and diegetic UI.</p>
+            </a>
+          </article>
+
+          <article class="card">
+            <a href="bionic-hand.html">
+              <span class="badge">Hardware</span>
+              <h3>Bionic Hand Prototype</h3>
+              <p>Embedded control + actuation; iterative grips, calibration tools, and test jigs.</p>
+            </a>
+          </article>
+
+          <article class="card">
+            <a href="face-muscle-ui.html">
+              <span class="badge">HCI</span>
+              <h3>Face-Muscle Click Interface</h3>
+              <p>Facial-muscle driven input prototype for hands-free interaction (Unity).</p>
+            </a>
+          </article>
+
+          <article class="card">
+            <a href="models.html">
+              <span class="badge">3D</span>
+              <h3>3D Modeling Portfolio</h3>
+              <p>Hard-surface and stylized assets; texture studies and render explorations.</p>
+            </a>
+          </article>
+
+          <article class="card">
             <a href="kandinsky.html">
               <span class="badge">Creative Coding</span>
-              <h3>色域与几何：Kandinsky 动画绘图</h3>
-              <p>用噪声驱动的几何与多层混合，生成互动抽象画；点击重构构图，支持保存作品。</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="circuit.html">
-              <span class="badge">Hardware</span>
-              <h3>LightWave：可编程 LED 光场</h3>
-              <p>基于 MCU 的调光与节律控制；提供参数面板与说明文档，便于二次创作。</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="maps.html">
-              <span class="badge">Geo · Viz</span>
-              <h3>城市热岛 → 风险地图</h3>
-              <p>遥感 + OSM + 栅格计算，将热岛强度与脆弱性综合为直观分层可视化。</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="paper.html">
-              <span class="badge">Research</span>
-              <h3>极端天气事件的生成与预警</h3>
-              <p>用统计学习与再分析数据评估极端事件的先验征兆与空间传播轨迹。</p>
+              <h3>Kandinsky Animated Composition</h3>
+              <p>Noise-driven geometry with layered blending; click to regenerate, press S to save.</p>
             </a>
           </article>
         </div>
       </section>
 
       <section class="panel">
-        <h2>联系 · Contact</h2>
+        <h2>Contact</h2>
         <div class="ornament" aria-hidden="true"></div>
-        <p><strong>Email：</strong> your_email@example.com<br>
-           <strong>GitHub：</strong> <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/yourhandle</a></p>
+        <p><strong>Email:</strong> your_email@example.com<br>
+           <strong>GitHub:</strong> <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/yourhandle</a></p>
       </section>
     </main>
 
-    <footer>© <span id="year"></span> <span id="name">Spike Rao</span> · 星海与古典的交汇</footer>
+    <footer>© <span id="year"></span> <span id="name">Spike Rao</span> · Where the cosmic meets the classical</footer>
   </div>
 
   <script>
-    // 年份与站点名
+    // Site name + year
     const SITE_NAME = "Spike Rao";
     document.getElementById('name').textContent = SITE_NAME;
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 星空粒子
+    // Starfield (respects prefers-reduced-motion)
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d', { alpha: false });
@@ -220,3 +228,4 @@
   </script>
 </body>
 </html>
+
