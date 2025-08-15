@@ -1,224 +1,81 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spike Rao — Homepage</title>
-
-  <!-- Fonts: classical serif + modern sans -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Spike Rao — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg-0:#060713;
-      --bg-1:#0a0c1f;
-      --ink:#eaeaf6;
-      --muted:#b5bfd8;
-      --accent:#89c7ff;
-      --accent-2:#7df7d4;
-      --gold:#d4af37;
-      --card:rgba(16,18,36,0.55);
-      --card-bd:rgba(160,180,255,0.18);
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --maxw: 1040px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--ink);
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(137,199,255,.22), transparent 60%),
-        radial-gradient(1000px 600px at 10% 10%, rgba(125,247,212,.15), transparent 60%),
-        linear-gradient(180deg,var(--bg-0),var(--bg-1));
-      overflow-x:hidden;
-    }
-    #bg{position:fixed; inset:0; width:100%; height:100%; z-index:-1; display:block; filter:contrast(120%) brightness(105%)}
-    .wrap{max-width:var(--maxw); margin:42px auto; padding:0 24px;}
-    header.hero{display:grid; gap:28px; align-items:center; grid-template-columns: 1.1fr .9fr;}
-    @media (max-width: 820px){header.hero{grid-template-columns: 1fr; text-align:center}}
-    .portrait{position:relative; border-radius:24px; overflow:hidden; background:var(--card); border:1px solid var(--card-bd); box-shadow:var(--shadow)}
-    .portrait img{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:4/3; filter:saturate(1.05)}
-    .portrait::before,.portrait::after{content:""; position:absolute; inset:10px; border-radius:20px; border:1px solid rgba(212,175,55,.35); pointer-events:none}
-    .portrait::after{inset:auto; left:12px; right:12px; bottom:12px; top:auto; height:2px; background:linear-gradient(90deg,transparent, var(--gold), transparent); opacity:.55}
-    .title h1{font-family:"Cinzel",serif; font-weight:700; letter-spacing:.5px; font-size:clamp(28px,4.5vw,44px); margin:0 0 6px; text-shadow:0 0 18px rgba(125,247,212,.12)}
-    .subtitle{color:var(--muted); font-size:clamp(14px,2.2vw,16px); line-height:1.6}
-    .panel{margin-top:26px; background:var(--card); border:1px solid var(--card-bd); border-radius:20px; padding:22px 22px 18px; box-shadow:var(--shadow); backdrop-filter: blur(6px); position:relative}
-    .panel .ornament{height:14px; margin:2px 0 14px; position:relative}
-    .panel .ornament::before{content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.7),transparent); transform:translateY(-50%)}
-    .panel .ornament::after{content:"◆"; position:absolute; left:50%; top:50%; transform:translate(-50%,-55%); color:var(--gold); font-size:12px; opacity:.9; text-shadow:0 0 12px rgba(212,175,55,.45)}
-    h2{margin:0 0 6px; font-family:"Cinzel",serif; font-weight:700; color:var(--gold); font-size:clamp(18px,3.2vw,26px); letter-spacing:.3px}
-    p{margin:0 0 12px; font-family:"EB Garamond",serif; font-size:18px}
-    .cards{display:grid; gap:14px; grid-template-columns:repeat(2, 1fr); margin-top:10px}
-    @media (max-width:800px){.cards{grid-template-columns:1fr}}
-    .card{padding:14px 16px; border-radius:14px; position:relative; background:rgba(14,16,34,.55); border:1px solid rgba(137,199,255,.2); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease}
-    .card:hover{transform:translateY(-3px); border-color:rgba(125,247,212,.6); box-shadow:0 12px 26px rgba(0,0,0,.45), 0 0 32px rgba(125,247,212,.18)}
-    .card a{color:var(--ink); text-decoration:none; display:block}
-    .badge{display:inline-block; font-size:12px; color:#0b1220; background:linear-gradient(90deg,var(--accent),var(--accent-2)); padding:3px 8px; border-radius:999px; margin-bottom:8px; font-weight:600; box-shadow:0 0 14px rgba(137,199,255,.35) inset}
-    .card h3{margin:4px 0 4px; font-family:"Cinzel",serif; font-size:18px}
-    .card p{margin:0; color:var(--muted); font-family:Inter,system-ui}
-    .actions{margin-top:16px; display:flex; gap:12px; flex-wrap:wrap}
-    .btn{appearance:none; border:1px solid rgba(137,199,255,.45); padding:10px 14px; border-radius:12px; background:rgba(10,14,34,.45); color:var(--ink); text-decoration:none; font-weight:600; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-    .btn:hover{transform:translateY(-2px); border-color:var(--gold); box-shadow:0 0 24px rgba(212,175,55,.25)}
-    .btn.primary{border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#03101a}
-    footer{color:var(--muted); text-align:center; margin:28px 0 42px; font-size:14px}
-    @media (prefers-reduced-motion: reduce){.card:hover{transform:none}}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
-  <!-- Starfield background -->
-  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="top">
+    <a class="brand" href="../">← Home</a>
+    <h1>Portfolio</h1>
+    <p class="sub">A small selection of recent work.</p>
+  </header>
 
-  <div class="wrap">
-    <header class="hero">
-      <div class="portrait">
-        <!-- Replace with your photo file -->
-        <img src="my-photo.JPG" alt="Photo of Spike Rao">
+  <main class="grid">
+    <!-- One media + title + text + links per project -->
+    <article class="card">
+      <img src="./media/vr-museum.jpg" alt="VR Space Station Museum scene">
+      <div class="body">
+        <h2>VR Space Station Museum</h2>
+        <p>Unity-built immersive tour with modular exhibits, spatial audio, and diegetic UI.</p>
+        <p class="links">
+          <a href="https://github.com/yourhandle/vr-museum" target="_blank" rel="noopener">Code</a>
+          <a href="https://example.com/vr-museum" target="_blank" rel="noopener">Site</a>
+        </p>
       </div>
+    </article>
 
-      <div class="title">
-        <h1>Spike Rao</h1>
-        <div class="subtitle">
-          UCSB Electrical Engineering  · Technology × Art × Design
-        </div>
-
-        <div class="actions">
-          <!-- Update with your real links -->
-          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download CV</a>
-          <a class="btn" href="mailto:your_email@example.com">Email me</a>
-          <a class="btn" href="https://github.com/yourhandle" target="_blank" rel="noopener">GitHub</a>
-        </div>
+    <article class="card">
+      <img src="./media/bionic-hand.jpg" alt="Bionic hand prototype close-up">
+      <div class="body">
+        <h2>Bionic Hand Prototype</h2>
+        <p>Embedded control + actuation; iterative grips, calibration tools, and test jigs.</p>
+        <p class="links">
+          <a href="https://github.com/yourhandle/bionic-hand" target="_blank" rel="noopener">Code</a>
+          <a href="https://example.com/bionic-hand" target="_blank" rel="noopener">Notes</a>
+        </p>
       </div>
-    </header>
+    </article>
 
-    <main>
-      <section class="panel">
-        <h2>About</h2>
-        <div class="ornament" aria-hidden="true"></div>
-        <p>I’m an Electrical Engineering student (Class of 2026) who loves blending technology, art, and design. I build interactive systems that balance precision and play—embedded control and reliability on one side; storytelling, visuals, and user experience on the other.</p>
-        <p>Recent work includes a <em>VR Space Station Museum</em>, a <em>bionic hand</em> prototype, a <em>face-muscle click interface</em>, and a set of <em>3D modeling</em> pieces. I care about clear documentation and accessibility so others can learn from and remix what I make.</p>
-      </section>
+    <article class="card">
+      <!-- Use YouTube/Vimeo embed if your video is large -->
+      <div class="video">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Face-Muscle Click Interface demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="body">
+        <h2>Face‑Muscle Click Interface</h2>
+        <p>Facial-muscle driven input prototype for hands‑free interaction (Unity + ARKit).</p>
+        <p class="links">
+          <a href="https://github.com/yourhandle/face-muscle-ui" target="_blank" rel="noopener">Code</a>
+          <a href="https://example.com/face-muscle" target="_blank" rel="noopener">Write‑up</a>
+        </p>
+      </div>
+    </article>
 
-      <section class="panel">
-        <h2>Selected Projects</h2>
-        <div class="ornament" aria-hidden="true"></div>
+    <article class="card">
+      <img src="./media/models.jpg" alt="Grid of 3D models">
+      <div class="body">
+        <h2>3D Modeling Studies</h2>
+        <p>Hard-surface and stylized assets; texture studies and render explorations.</p>
+        <p class="links">
+          <a href="https://github.com/yourhandle/3d-studies" target="_blank" rel="noopener">Repo</a>
+          <a href="https://example.com/3d-studies" target="_blank" rel="noopener">Gallery</a>
+        </p>
+      </div>
+    </article>
+  </main>
 
-        <div class="cards">
-          <article class="card">
-            <a href="vr-museum.html">
-              <span class="badge">VR</span>
-              <h3>VR Space Station Museum</h3>
-              <p>Unity-built immersive tour with modular exhibits, spatial audio, and diegetic UI.</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="bionic-hand.html">
-              <span class="badge">Hardware</span>
-              <h3>Bionic Hand Prototype</h3>
-              <p>Embedded control + actuation; iterative grips, calibration tools, and test jigs.</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="face-muscle-ui.html">
-              <span class="badge">HCI</span>
-              <h3>Face-Muscle Click Interface</h3>
-              <p>Facial-muscle driven input prototype for hands-free interaction (Unity).</p>
-            </a>
-          </article>
-
-          <article class="card">
-            <a href="models.html">
-              <span class="badge">3D</span>
-              <h3>3D Modeling Portfolio</h3>
-              <p>Hard-surface and stylized assets; texture studies and render explorations.</p>
-            </a>
-          </article>
-
-        </div>
-      </section>
-
-      <section class="panel">
-        <h2>Contact</h2>
-        <div class="ornament" aria-hidden="true"></div>
-        <p><strong>Email:</strong> crao4036@gmail.com<br>
-           <strong>GitHub:</strong> <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/yourhandle</a></p>
-      </section>
-    </main>
-
-    <footer>© <span id="year"></span> <span id="name">Spike Rao</span> · Bringing imagined creations into reality</footer>
-  </div>
-
-  <script>
-    // Site name + year
-    const SITE_NAME = "Spike Rao";
-    document.getElementById('name').textContent = SITE_NAME;
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Starfield (respects prefers-reduced-motion)
-    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d', { alpha: false });
-    let stars = [], w=0, h=0, t=0;
-    const STAR_COUNT_BASE = 120, CONNECT_DIST = 110, DPR = Math.min(2, window.devicePixelRatio || 1);
-
-    function resize(){
-      w = canvas.width = Math.floor(window.innerWidth * DPR);
-      h = canvas.height = Math.floor(window.innerHeight * DPR);
-      canvas.style.width = window.innerWidth + 'px';
-      canvas.style.height = window.innerHeight + 'px';
-      const target = Math.floor(STAR_COUNT_BASE * Math.sqrt((w*h)/(1400*800)));
-      stars = Array.from({length: target}, () => ({
-        x: Math.random()*w, y: Math.random()*h,
-        vx: (Math.random()-.5)*0.06*DPR, vy: (Math.random()-.5)*0.06*DPR,
-        r: (Math.random()*1.3 + 0.3)*DPR, tw: Math.random()*Math.PI*2
-      }));
-    }
-    window.addEventListener('resize', resize, { passive:true });
-    resize();
-
-    function step(){
-      t += 0.016;
-      ctx.fillStyle = 'rgb(6,7,19)'; ctx.fillRect(0,0,w,h);
-      const gx = ctx.createRadialGradient(w*0.75, h*0.1, 0, w*0.75, h*0.1, Math.max(w,h)*0.8);
-      gx.addColorStop(0, 'rgba(137,199,255,0.06)'); gx.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = gx; ctx.fillRect(0,0,w,h);
-
-      ctx.globalCompositeOperation = 'lighter';
-      for(const s of stars){
-        s.x += s.vx; s.y += s.vy;
-        if (s.x < -20) s.x = w+20; if (s.x > w+20) s.x = -20;
-        if (s.y < -20) s.y = h+20; if (s.y > h+20) s.y = -20;
-        const tw = (Math.sin(t*0.9 + s.tw) + 1)/2;
-        const r = s.r*(0.6 + 0.5*tw);
-        const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r*3);
-        grad.addColorStop(0, 'rgba(255,255,255,0.9)');
-        grad.addColorStop(1, 'rgba(137,199,255,0.05)');
-        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI*2); ctx.fill();
-      }
-
-      ctx.globalCompositeOperation = 'screen';
-      ctx.lineWidth = 0.6 * DPR;
-      for (let i=0;i<stars.length;i++){
-        for (let j=i+1;j<stars.length;j++){
-          const a = stars[i], b = stars[j];
-          const dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
-          if (d < CONNECT_DIST * DPR){
-            const o = (1 - d/(CONNECT_DIST*DPR)) * 0.25;
-            ctx.strokeStyle = `rgba(137,199,255,${o})`;
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-          }
-        }
-      }
-      ctx.globalCompositeOperation = 'source-over';
-      if (!prefersReduce) requestAnimationFrame(step);
-    }
-    if (!prefersReduce) step();
-  </script>
+  <footer class="foot">© <span id="year"></span> Spike Rao</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
