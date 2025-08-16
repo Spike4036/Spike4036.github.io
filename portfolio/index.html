@@ -56,6 +56,69 @@
   </main>
 
   <footer class="foot">© <span id="year"></span> Spike Rao</footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Footer info
+    document.getElementById('name').textContent = "Spike Rao";
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- p5.js starfield behind content ---
+    let stars = []; let mx = 0, my = 0; // normalized mouse (-1..1)
+
+    function setup(){
+      const c = createCanvas(window.innerWidth, window.innerHeight);
+      // Make sure the canvas is ALWAYS behind content
+      Object.assign(c.elt.style, {
+        position: 'fixed',
+        inset: '0',
+        zIndex: '-1',          // bottom-most layer
+        pointerEvents: 'none', // never block clicks
+        display: 'block'
+      });
+      noStroke();
+      for(let i=0;i<220;i++){
+        stars.push({
+          x: random(width), y: random(height),
+          z: random(0.4, 1.6), r: random(0.6, 2.2),
+          a: random(TWO_PI), s: random(0.0007, 0.002)
+        });
+      }
+    }
+
+    // Track mouse as parallax input
+    window.addEventListener('mousemove', e=>{
+      mx = (e.clientX / window.innerWidth - 0.5) * 2;
+      my = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, {passive:true});
+
+    function draw(){
+      // animated sky gradient
+      let t = (sin(millis()/6000) * 0.5 + 0.5);
+      const topC = lerpColor(color(10,12,27), color(20,24,44), t);
+      const botC = lerpColor(color(3,5,15), color(6,8,20), t);
+      for(let y=0;y<height;y++){
+        let k = y/height;
+        stroke(lerpColor(topC, botC, k));
+        line(0,y,width,y);
+      }
+      noStroke();
+
+      // parallax offset from mouse
+      const px = mx * 10;
+      const py = my * 8;
+
+      // stars render
+      for(let s of stars){
+        s.a += s.s;
+        let ox = cos(s.a) * 12 * (2 - s.z);
+        let oy = sin(s.a) * 8  * (2 - s.z);
+        let x = (s.x + px * (2 - s.z) + ox + width) % width;
+        let y = (s.y + py * (2 - s.z) + oy + height) % height;
+        fill(240, 244, 255, 190 * (2 - s.z));
+        circle(x, y, s.r * (2 - s.z));
+      }
+    }
+
+    function windowResized(){ resizeCanvas(window.innerWidth, window.innerHeight); }
+  </script>
 </body>
 </html>
