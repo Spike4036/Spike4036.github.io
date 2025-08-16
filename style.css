@@ -20,8 +20,8 @@ body{
   font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   /* translucent so the canvas shows through */
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(137,199,255,.22), transparent 60%),
-    radial-gradient(1000px 600px at 10% 10%, rgba(125,247,212,.15), transparent 60%);
+    radial-gradient(1200px 600px at 80% -10%, rgba(137,199,255,.24), transparent 60%),
+    radial-gradient(1000px 600px at 10% 10%, rgba(125,247,212,.32), transparent 60%);
   overflow-x:hidden;
   background-color:#060713; /* dark fallback so no white flash */
 }
