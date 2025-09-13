@@ -73,6 +73,21 @@
       </main>
 
   <footer class="foot">© <span id="year"></span> Spike Rao</footer>
- <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+ <script>
+   document.getElementById('year').textContent = new Date().getFullYear();
+ // 整卡片可点击
+  document.querySelectorAll('.card[data-href]').forEach(card => {
+    const url = card.dataset.href;
+    if (!url) return;
+    card.addEventListener('click', () => {
+      window.open(url, '_blank'); // 新标签打开；想在当前页就用 location.href = url
+    });
+  });
+
+  // 避免点击内部链接时触发整卡点击
+  document.querySelectorAll('.card .links a').forEach(a => {
+    a.addEventListener('click', e => e.stopPropagation());
+  });
+ </script>
 </body>
 </html>
